@@ -115,7 +115,7 @@ public class SocketHandler extends TextWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         if (session.getHandshakeHeaders().getFirst("type").equals("mainChannel"))
         {
-            session.close();
+            sessions.remove(session);
         }
         else if(session.getHandshakeHeaders().getFirst("type").equals("chat"))
         {
